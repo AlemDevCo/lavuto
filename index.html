@@ -501,9 +501,32 @@
   <p style="color:var(--gray)">Fait avec 💧 au Québec</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Mobile menu
   const ham = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
   const cta = document.getElementById('navCta');
-  ham.a
+  ham.addEventListener('click', () => {
+    links.classList.toggle('open');
+    cta.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); cta.classList.remove('open');
+  }));
+
+  // Scroll reveal — show all immediately if IntersectionObserver misses them
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -20px 0px' });
+    reveals.forEach(r => observer.observe(r));
+  } else {
+    reveals.forEach(r => r.classList.add('visible'));
+  }
+</script>
