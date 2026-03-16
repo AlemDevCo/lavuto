@@ -88,6 +88,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 
+  <!-- TrustBox script -->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <!-- End TrustBox script -->
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -203,6 +207,18 @@
     }
     .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
 
+    /* ── TRUSTPILOT HERO WIDGET ── */
+    .hero-trustpilot {
+      margin-top: 2.5rem;
+      animation: fadeUp .8s .6s ease both;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-trustpilot .trustpilot-widget {
+      max-width: 420px;
+      width: 100%;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -300,6 +316,19 @@
     }
     .service-includes li::before { content: '✓'; color: var(--cyan); font-size: .8rem; }
 
+    /* ── TRUSTPILOT SECTION ── */
+    #trustpilot-section {
+      background: var(--deep);
+      padding: 4rem 5vw;
+      text-align: center;
+    }
+    #trustpilot-section .section-label { margin-bottom: .75rem; }
+    #trustpilot-section .section-title { margin-bottom: 1.5rem; }
+    .trustpilot-section-widget {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
     /* ── FAQ ── */
     #faq { background: var(--deep); }
     .faq-grid { margin-top: 3rem; display: grid; gap: 1.25rem; max-width: 800px; }
@@ -378,6 +407,12 @@
     .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; }
     .footer-bottom p { color: var(--gray); font-size: .78rem; }
 
+    /* ── FOOTER TRUSTPILOT ── */
+    .footer-trustpilot {
+      flex: 1 1 260px;
+    }
+    .footer-trustpilot h4 { color: var(--white); font-size: .85rem; font-weight: 500; margin-bottom: .75rem; letter-spacing: .08em; }
+
     /* ── HAMBURGER (mobile) ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
@@ -405,6 +440,7 @@
       .zones-wrapper { flex-direction: column; }
       .contact-cards { flex-direction: column; }
       .contact-card { flex: 1 1 auto; }
+      .hero-trustpilot .trustpilot-widget { max-width: 100%; }
     }
 
     /* ── SCROLL REVEAL ── */
@@ -465,6 +501,15 @@
       <a href="sms:4184101339" class="btn-primary" aria-label="Envoyer un texto au 418-410-1339">💬 Texter le 418-410-1339</a>
       <a href="#contact" class="btn-outline">✉ info@lavuto.com</a>
     </div>
+
+    <!-- TrustBox widget - Hero (Mini) -->
+    <div class="hero-trustpilot">
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69b862cfb641f5ae4d91f0a5" data-style-height="52px" data-style-width="100%" data-token="ca1394dc-8111-4ed1-9a28-5082caf1fc36" data-theme="dark">
+        <a href="https://fr.trustpilot.com/review/lavuto.com" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
+    <!-- End TrustBox widget -->
+
   </div>
 </section>
 
@@ -553,6 +598,19 @@
       </div>
     </article>
   </div>
+</section>
+
+<!-- TRUSTPILOT REVIEWS SECTION -->
+<section id="trustpilot-section" aria-labelledby="trustpilot-title">
+  <div class="section-label">Avis clients</div>
+  <h2 class="section-title" id="trustpilot-title">Ce que disent nos clients</h2>
+  <!-- TrustBox widget - Review Collector -->
+  <div class="trustpilot-section-widget">
+    <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69b862cfb641f5ae4d91f0a5" data-style-height="52px" data-style-width="100%" data-token="ca1394dc-8111-4ed1-9a28-5082caf1fc36" data-theme="dark">
+      <a href="https://fr.trustpilot.com/review/lavuto.com" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+  </div>
+  <!-- End TrustBox widget -->
 </section>
 
 <!-- ZONES -->
@@ -722,6 +780,15 @@
         <li><span style="color:var(--gray);font-size:.82rem;">Québec (QC), Canada</span></li>
       </ul>
     </address>
+    <!-- TrustPilot in footer -->
+    <div class="footer-trustpilot">
+      <h4>Avis clients</h4>
+      <!-- TrustBox widget - Footer (Mini) -->
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69b862cfb641f5ae4d91f0a5" data-style-height="52px" data-style-width="100%" data-token="ca1394dc-8111-4ed1-9a28-5082caf1fc36" data-theme="dark">
+        <a href="https://fr.trustpilot.com/review/lavuto.com" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+      <!-- End TrustBox widget -->
+    </div>
   </div>
   <div class="footer-bottom">
     <p>© 2025 LAVUTO — Lavage auto à domicile, région de Québec</p>
