@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>404 — Page introuvable | LAVUTO</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0b1120;
+      --deep:   #0d1a2e;
+      --blue:   #1353ff;
+      --cyan:   #00d4ff;
+      --white:  #f0f4ff;
+      --gray:   #8896b3;
+      --card:   #111d35;
+      --border: rgba(0,212,255,.15);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    /* Background glows */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .25;
+      pointer-events: none;
+    }
+    body::before {
+      width: 60vw; height: 60vw;
+      top: -20%; left: -15%;
+      background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+    body::after {
+      width: 50vw; height: 50vw;
+      bottom: -15%; right: -10%;
+      background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+      animation: drift 10s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(4%, 7%) scale(1.1); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+    }
+
+    /* Logo */
+    .logo {
+      margin-bottom: 3rem;
+      animation: fadeUp .6s ease both;
+    }
+    .logo img {
+      max-width: 160px;
+      height: auto;
+    }
+
+    /* 404 big number */
+    .error-code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(7rem, 25vw, 14rem);
+      letter-spacing: .04em;
+      line-height: .9;
+      background: linear-gradient(135deg, var(--white) 30%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp .6s .1s ease both;
+      margin-bottom: .5rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--cyan);
+      margin: 1.25rem auto;
+      animation: fadeUp .6s .2s ease both;
+      box-shadow: 0 0 12px var(--cyan);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      letter-spacing: .08em;
+      margin-bottom: .75rem;
+      animation: fadeUp .6s .25s ease both;
+    }
+
+    p {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp .6s .3s ease both;
+    }
+
+    .btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp .6s .4s ease both;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: .85rem 2.2rem;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--cyan); color: var(--navy); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid var(--gray);
+      color: var(--white);
+      padding: .85rem 2.2rem;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: border-color .25s, color .25s, transform .2s;
+    }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+    /* Quick links */
+    .quick-links {
+      margin-top: 3rem;
+      animation: fadeUp .6s .5s ease both;
+    }
+    .quick-links p {
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    .quick-links ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .quick-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .88rem;
+      transition: color .2s;
+    }
+    .quick-links a:hover { color: var(--cyan); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .btns { flex-direction: column; align-items: center; }
+      .btns a { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="logo">
+      <a href="/">
+        <img src="/LAVUTO.png" alt="LAVUTO — Retour à l'accueil" width="160" />
+      </a>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <div class="divider"></div>
+
+    <h1>Page introuvable</h1>
+
+    <p>Cette page n'existe pas ou a été déplacée. Mais votre voiture, elle, peut toujours être lavée chez vous.</p>
+
+    <div class="btns">
+      <a href="/" class="btn-primary">← Retour à l'accueil</a>
+      <a href="sms:4184101339" class="btn-outline">💬 Texter maintenant</a>
+    </div>
+
+    <div class="quick-links">
+      <p>Accès rapide</p>
+      <ul>
+        <li><a href="/#services">Services &amp; prix</a></li>
+        <li><a href="/#zones">Zones desservies</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="mailto:info@lavuto.com">info@lavuto.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
