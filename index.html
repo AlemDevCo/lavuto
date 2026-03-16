@@ -5,19 +5,12 @@
   <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ══ TITLE : mot-clé principal + localisation ══ -->
   <title>LAVUTO — Lavage Auto à Domicile | Québec, Val-Bélair, Shannon, Loretteville</title>
 
-  <!-- ══ META DESCRIPTION : 150-160 chars, CTA inclus ══ -->
   <meta name="description" content="Service de lavage automobile à domicile à Québec. On se déplace chez vous à Val-Bélair, Shannon, Loretteville et Saint-Gabriel. Réservez par texto : 418-410-1339." />
-
-  <!-- ══ KEYWORDS (signal secondaire, toujours utile localement) ══ -->
   <meta name="keywords" content="lavage auto domicile Québec, car wash à domicile, lavage voiture domicile Val-Bélair, nettoyage auto domicile Shannon, lavage auto Loretteville, détail auto domicile Québec, lavuto" />
-
-  <!-- ══ CANONICAL ══ -->
   <link rel="canonical" href="https://www.lavuto.com/" />
 
-  <!-- ══ OPEN GRAPH (partages Facebook / LinkedIn) ══ -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_CA" />
   <meta property="og:title" content="LAVUTO — Lavage Auto à Domicile à Québec" />
@@ -25,12 +18,10 @@
   <meta property="og:url" content="https://www.lavuto.com/" />
   <meta property="og:site_name" content="LAVUTO" />
 
-  <!-- ══ TWITTER CARD ══ -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="LAVUTO — Lavage Auto à Domicile à Québec" />
   <meta name="twitter:description" content="Votre voiture lavée chez vous à Québec. Texto : 418-410-1339." />
 
-  <!-- ══ SCHEMA.ORG : LocalBusiness + Service (JSON-LD) ══ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,7 +83,6 @@
   }
   </script>
 
-  <!-- ══ FONTS ══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -122,7 +112,7 @@
     }
 
     /* ── NAV ── */
-    nav {
+    nav[aria-label="Navigation principale"] {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.25rem 5vw;
@@ -132,12 +122,12 @@
     }
     .logo { display: flex; align-items: center; }
     .logo img { max-width: 160px; height: auto; display: block; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
+    #navLinks { display: flex; gap: 2rem; list-style: none; }
+    #navLinks a {
       color: var(--gray); text-decoration: none; font-size: .9rem; letter-spacing: .04em;
       transition: color .25s;
     }
-    .nav-links a:hover { color: var(--cyan); }
+    #navLinks a:hover { color: var(--cyan); }
     .nav-cta {
       background: var(--blue); color: var(--white);
       border: none; border-radius: 4px;
@@ -152,7 +142,7 @@
       min-height: 100vh;
       display: grid; place-items: center;
       position: relative; overflow: hidden;
-      padding: 8rem 5vw 5rem;
+      padding: calc(var(--nav-h, 80px) + 4rem) 5vw 5rem;
       text-align: center;
     }
     #hero::before, #hero::after {
@@ -393,15 +383,22 @@
 
     @media (max-width: 768px) {
       .hamburger { display: flex; }
-      .nav-links, .nav-cta {
+
+      /* Only the main nav links dropdown — footer nav unaffected */
+      #navLinks {
         display: none;
-        position: fixed; top: 65px; left: 0; right: 0;
+        position: fixed; top: var(--nav-h, 65px); left: 0; right: 0;
         background: var(--deep); border-bottom: 1px solid var(--border);
         flex-direction: column; align-items: center; padding: 2rem;
         gap: 1.5rem; z-index: 99;
       }
-      .nav-links.open, .nav-cta.open { display: flex; }
-      #hero { padding: 7rem 6vw 4rem; }
+      #navLinks.open { display: flex; }
+      /* Hide CTA button on mobile — hamburger replaces it */
+      #navCta { display: none; }
+
+      /* Hero padding is driven by --nav-h CSS variable set via JS */
+      #hero { padding: calc(var(--nav-h, 80px) + 3rem) 6vw 4rem; }
+
       .hero-logo img { max-width: 75vw; }
       .hero-sub { font-size: 1rem; }
       .hero-btns { flex-direction: column; align-items: center; width: 100%; }
@@ -418,7 +415,6 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── Visually hidden for screen readers / SEO ── */
     .sr-only {
       position: absolute; width: 1px; height: 1px;
       padding: 0; margin: -1px; overflow: hidden;
@@ -432,7 +428,8 @@
 <nav aria-label="Navigation principale">
   <div class="logo">
     <a href="/" aria-label="LAVUTO — Accueil">
-      <img src="data:image/png;base64,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" alt="LAVUTO — Lavage Auto à Domicile Québec" width="160" height="auto" />
+      <!-- FIX: path points to LAVUTO.png (place the image file in the same folder as index.html) -->
+      <img src="LAVUTO.png" alt="LAVUTO — Lavage Auto à Domicile Québec" width="160" height="auto" />
     </a>
   </div>
   <ul class="nav-links" id="navLinks">
@@ -453,12 +450,14 @@
   <div class="hero-inner">
     <p class="hero-badge">Lavage auto à domicile · Région de Québec</p>
 
-    <!-- H1 visible (sémantiquement important pour Google) -->
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.06em;color:var(--white);margin-bottom:1rem;animation:fadeUp .8s .1s ease both;">
       Lavage Auto <span style="color:var(--cyan);">à Domicile</span> à Québec
     </h1>
 
-    <div class="hero-logo"><img src="data:image/png;base64,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" alt="LAVUTO logo" width="420" height="auto" style="max-width:min(55vw,420px);filter:drop-shadow(0 0 30px rgba(0,212,255,.25));" /></div>
+    <div class="hero-logo">
+      <!-- FIX: path points to LAVUTO.png -->
+      <img src="LAVUTO.png" alt="LAVUTO logo" width="420" height="auto" style="max-width:min(55vw,420px);filter:drop-shadow(0 0 30px rgba(0,212,255,.25));" />
+    </div>
 
     <p class="hero-sub">Votre voiture lavée chez vous à Québec — Val-Bélair, Shannon, Loretteville, Saint-Gabriel. Propre, rapide et sans effort, on vient à vous.</p>
     <div class="hero-btns">
@@ -587,7 +586,7 @@
   </div>
 </section>
 
-<!-- FAQ — importante pour le SEO local (aussi éligible rich snippets Google) -->
+<!-- FAQ -->
 <section id="faq" aria-labelledby="faq-title">
   <div class="section-label">Questions fréquentes</div>
   <h2 class="section-title" id="faq-title">FAQ</h2>
@@ -626,7 +625,6 @@
     </article>
   </div>
 
-  <!-- Schema FAQ JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -731,22 +729,28 @@
 </footer>
 
 <script>
-  // Mobile menu
+  // Measure actual nav height → CSS variable — target main nav by ID, not generic querySelector('nav')
+  const navEl = document.querySelector('nav[aria-label="Navigation principale"]');
+  function setNavHeight() {
+    const h = navEl.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--nav-h', h + 'px');
+    document.documentElement.style.scrollPaddingTop = h + 'px';
+  }
+  setNavHeight();
+  window.addEventListener('resize', setNavHeight);
+
   const ham = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
   const cta = document.getElementById('navCta');
   ham.addEventListener('click', () => {
     const open = links.classList.toggle('open');
-    cta.classList.toggle('open');
     ham.setAttribute('aria-expanded', open);
   });
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     links.classList.remove('open');
-    cta.classList.remove('open');
     ham.setAttribute('aria-expanded', 'false');
   }));
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
